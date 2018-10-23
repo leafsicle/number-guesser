@@ -8,7 +8,7 @@ lower = "Type \'l\' if your number is lower\n"
 
 puts "Think of a number between #{min} to #{max}. Got it?\n"
 puts "Type \'h\' if your number is from #{max+((min-max)/2)}-#{max}\n"
-puts " Tyoe \'l\' if your number is from #{min}-#{min+((max-min)/2)}\n"
+puts " Type \'l\' if your number is from #{min}-#{min+((max-min)/2)}\n"
 
 while true
   choice = gets.chomp
@@ -19,6 +19,7 @@ while true
     puts "I did it in #{counter} turns!"
     sleep 3
     system('clear')
+    system('ruby guess.rb')
     break
   end
 
@@ -29,7 +30,8 @@ while true
     correct
     min=guess+1
     guess= min+((max-min)/2)
-    puts "Is your answer #{guess}?  #{correct} #{higher} #{lower}"
+    puts "Is your answer #{guess}?"
+    puts  "#{correct} #{higher} #{lower}"
     counter+=1
   end
 
@@ -37,12 +39,16 @@ while true
     correct
     max=guess-1
     guess= max+((min-max)/2)
-    puts "Is your answer #{guess}? #{correct} #{higher} #{lower}"
+    puts "Is your answer #{guess}?"
+    puts "#{correct} #{higher} #{lower}"
     counter+=1
   end
 
-  if guess<0 
-    puts "I think you have forgotten your number. Try typing CNTRL+C and try this again!"
+  if guess<0  || guess > 1000
+    puts "I think you have forgotten your number."
+    sleep 3
+    system('clear')
+    system('ruby guess.rb')
   end
 end
 
