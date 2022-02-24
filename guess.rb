@@ -1,14 +1,14 @@
-min=0 #this is the lowest possible value for the data set
-max=1000 # this is the maximum value for our data set currently. It can increase limitlessly
-guess= (max+min)/2 #this is the middle of the range of #'s'
-counter=0 #this should start at 0. Clearly
-correct = "Type\'y\' for yes\n"
-higher ="Type \'h\' if your number is higher\n"
-lower = "Type \'l\' if your number is lower\n"
+min=0 
+max=100 
+guess= (max+min)/2 
+counter=0 
+correct = "Type'y' for yes\n"
+higher ="Type 'h' if your number is higher\n"
+lower = "Type 'l' if your number is lower\n"
 
 puts "Think of a number between #{min} to #{max}. Got it?\n"
-puts "Type \'h\' if your number is from #{max+((min-max)/2)}-#{max}\n"
-puts " Type \'l\' if your number is from #{min}-#{min+((max-min)/2)}\n"
+puts "Type 'h' if your number is from #{max+((min-max)/2)}-#{max}\n"
+puts " Type 'l' if your number is from #{min}-#{min+((max-min)/2)}\n"
 
 while true
   choice = gets.chomp
@@ -16,7 +16,15 @@ while true
   #The next lines dictate that if the choice is 'y' for yes then the game 
   #is over and the terminal will return the number of turns used to guess the correct number
   if choice == "y"|| choice =="Y"
-    puts "I did it in #{counter} turns!"
+    if counter == 0
+       counter+=1
+    end
+    if counter ==1 
+      puts "I got it right in #{counter} turn!"
+    end
+    if counter >1 
+      puts "I did it in #{counter} turns!"
+    end
     sleep 3
     system('clear')
     system('ruby guess.rb')
